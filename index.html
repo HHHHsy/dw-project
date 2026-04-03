@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python教学平台</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/editor.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>Python教学平台</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#knowledge" class="nav-link">教材知识</a></li>
+                <li><a href="#practice" class="nav-link">在线实践</a></li>
+            </ul>
+            <div class="user-profile" id="userProfile" onclick="handleProfileClick(event)">
+                <div class="avatar">U</div>
+                <span id="userNameDisplay">未登录</span>
+                <div class="dropdown-menu" id="userDropdown">
+                    <div class="dropdown-item" onclick="logout(event)">退出登录</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="section active">
+            <div class="hero">
+                <h2>欢迎使用Python教学平台</h2>
+                <p>专为学生设计的Python编程学习平台</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="56" height="56" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <h3>教材知识</h3>
+                        <p>系统学习Python基础知识，包含重难点解析和教学课件</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="56" height="56" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h3>在线实践</h3>
+                        <p>集成Python编辑器，支持语法高亮和实时运行验证</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="56" height="56" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        </div>
+                        <h3>分层练习</h3>
+                        <p>基础题、提升题、拓展题，满足不同学习需求</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-start">
+                <h3>快速开始学习</h3>
+                <div class="start-options">
+                    <div class="start-option">
+                        <h4>学习教材知识</h4>
+                        <p>从基础语法开始，逐步深入学习Python编程</p>
+                        <button class="btn-primary" onclick="showSection('knowledge')">开始学习</button>
+                    </div>
+                    <div class="start-option">
+                        <h4>在线编程实践</h4>
+                        <p>在浏览器中直接编写和运行Python代码</p>
+                        <button class="btn-primary" onclick="showSection('practice')">开始编程</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-index">
+                <h3>教材章节索引</h3>
+                <div class="chapter-grid">
+                    <div class="chapter-card">
+                        <h4>第一章：Python基础</h4>
+                        <ul>
+                            <li>Python简介与环境搭建</li>
+                            <li>变量与数据类型</li>
+                            <li>运算符与表达式</li>
+                            <li>输入输出函数</li>
+                        </ul>
+                    </div>
+                    <div class="chapter-card">
+                        <h4>第二章：流程控制</h4>
+                        <ul>
+                            <li>条件语句if-else</li>
+                            <li>循环语句for/while</li>
+                            <li>break与continue</li>
+                            <li>嵌套循环</li>
+                        </ul>
+                    </div>
+                    <div class="chapter-card">
+                        <h4>第三章：函数与模块</h4>
+                        <ul>
+                            <li>函数定义与调用</li>
+                            <li>参数传递</li>
+                            <li>返回值</li>
+                            <li>常用内置函数</li>
+                        </ul>
+                    </div>
+                    <div class="chapter-card">
+                        <h4>第四章：数据结构</h4>
+                        <ul>
+                            <li>列表与元组</li>
+                            <li>字典与集合</li>
+                            <li>字符串操作</li>
+                            <li>文件读写</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="knowledge" class="section">
+            <div class="section-header">
+                <h2>教材知识</h2>
+                <p>系统学习Python编程知识，包含重难点解析</p>
+            </div>
+            
+            <div class="knowledge-content">
+                <div class="chapter-nav">
+                    <h3>章节导航</h3>
+                    <div class="chapter-list">
+                        <div class="chapter-item active" data-chapter="1">第一章：Python基础</div>
+                        <div class="chapter-item" data-chapter="2">第二章：流程控制</div>
+                        <div class="chapter-item" data-chapter="3">第三章：函数与模块</div>
+                        <div class="chapter-item" data-chapter="4">第四章：数据结构</div>
+                    </div>
+                </div>
+                
+                <div class="chapter-content">
+                    <div class="chapter-section active" data-chapter="1">
+                        <h3>第一章：Python基础</h3>
+                        <div class="knowledge-point">
+                            <h4>知识点讲解</h4>
+                            <ul>
+                                <li><strong>变量与命名规范：</strong>变量名只能包含字母、数字和下划线，且不能以数字开头，应做到见名知意。</li>
+                                <li><strong>基本数据类型：</strong>整数（<code>int</code>）、浮点数（<code>float</code>）、字符串（<code>str</code>）和布尔值（<code>bool</code>）。</li>
+                                <li><strong>运算符：</strong>包含算术运算符（<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>）和赋值运算符。</li>
+                                <li><strong>输入输出：</strong>使用 <code>print()</code> 函数在屏幕上输出结果，使用 <code>input()</code> 接收用户的键盘输入。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="difficult-point">
+                            <h4>重难点解析</h4>
+                            <div class="point-item">
+                                <h5>数据类型转换的陷阱</h5>
+                                <p>从 <code>input()</code> 接收到的输入永远是字符串类型。如果需要进行数学运算，必须先使用 <code>int()</code> 或 <code>float()</code> 进行类型转换。</p>
+                                <div class="code-example">
+                                    <code># 错误示范：会导致字符串拼接</code><br>
+                                    <code>age = input("请输入年龄：")</code><br>
+                                    <code>print(age + 1)  # TypeError 报错</code><br>
+                                    <code><br># 正确做法：显式转换</code><br>
+                                    <code>age = int(input("请输入年龄："))</code><br>
+                                    <code>print("明年你", age + 1, "岁")</code>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="learning-resources">
+                            <h4>学习资源</h4>
+                            <div class="resource-list">
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    </div>
+                                    <span>Python安装指南.pdf</span>
+                                    <button class="btn-secondary">下载</button>
+                                </div>
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                                    </div>
+                                    <span>微课：我的第一个Python程序</span>
+                                    <button class="btn-secondary">观看</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-section" data-chapter="2">
+                        <h3>第二章：流程控制</h3>
+                        <div class="knowledge-point">
+                            <h4>知识要点</h4>
+                            <ul>
+                                <li><strong>缩进规则：</strong>Python不使用大括号，而是严格通过缩进（通常是4个空格）来区分代码块的层级。</li>
+                                <li><strong>条件判断：</strong>使用 <code>if</code>、<code>elif</code> 和 <code>else</code> 根据条件的真假来决定程序的走向。</li>
+                                <li><strong>循环结构：</strong><code>for</code> 循环常用于遍历序列或指定次数；<code>while</code> 循环用于当条件为真时持续执行。</li>
+                                <li><strong>循环控制：</strong><code>break</code> 用于强行终止整个循环；<code>continue</code> 用于跳过当前这一轮，进入下一次循环。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="difficult-point">
+                            <h4>重难点解析</h4>
+                            <div class="point-item">
+                                <h5>条件判断的逻辑与陷阱</h5>
+                                <p>在 <code>if-elif</code> 结构中，程序会从上到下依次判断。一旦某个条件满足，执行完对应的代码块后就会直接跳出整个结构，<strong>不会</strong>再判断下面的条件。</p>
+                                <div class="code-example">
+                                    <code>score = 85</code><br>
+                                    <code># 推荐的写法：条件从严格到宽松</code><br>
+                                    <code>if score >= 90:</code><br>
+                                    <code>&nbsp;&nbsp;&nbsp;&nbsp;print("优秀")</code><br>
+                                    <code>elif score >= 80:</code><br>
+                                    <code>&nbsp;&nbsp;&nbsp;&nbsp;print("良好")  # 此处会被执行</code><br>
+                                    <code>else:</code><br>
+                                    <code>&nbsp;&nbsp;&nbsp;&nbsp;print("继续努力")</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-section" data-chapter="3">
+                        <h3>第三章：函数与模块</h3>
+                        <div class="knowledge-point">
+                            <h4>知识要点</h4>
+                            <ul>
+                                <li><strong>定义函数：</strong>使用 <code>def</code> 关键字声明一个函数，将重复的代码封装起来。</li>
+                                <li><strong>参数传递：</strong>支持必须参数、默认参数（带有默认值）以及不定长参数。</li>
+                                <li><strong>函数返回值：</strong>使用 <code>return</code> 将计算结果返回给调用者，如果没有写 <code>return</code>，函数默认返回 <code>None</code>。</li>
+                                <li><strong>模块与包：</strong>使用 <code>import</code> 或 <code>from ... import ...</code> 来导入其他文件或 Python 自带的标准库（如 <code>math</code>, <code>random</code>）。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="difficult-point">
+                            <h4>重难点解析</h4>
+                            <div class="point-item">
+                                <h5>局部变量与全局变量的作用域</h5>
+                                <p>在函数内部创建的变量默认是局部变量，只能在函数内部使用。如果需要在函数内部修改全局变量，必须使用 <code>global</code> 关键字进行声明。</p>
+                                <div class="code-example">
+                                    <code>count = 0  # 全局变量</code><br>
+                                    <code><br>def add_count():</code><br>
+                                    <code>&nbsp;&nbsp;&nbsp;&nbsp;global count  # 声明我们要修改全局的 count</code><br>
+                                    <code>&nbsp;&nbsp;&nbsp;&nbsp;count += 1</code><br>
+                                    <code>&nbsp;&nbsp;&nbsp;&nbsp;print(f"当前计数：{count}")</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-section" data-chapter="4">
+                        <h3>第四章：数据结构</h3>
+                        <div class="knowledge-point">
+                            <h4>知识要点</h4>
+                            <ul>
+                                <li><strong>列表 (List)：</strong>最常用的容器，有序且可修改，用中括号 <code>[ ]</code> 表示。可以使用 <code>append()</code> 等方法增加元素。</li>
+                                <li><strong>元组 (Tuple)：</strong>有序但<strong>不可修改</strong>，用小括号 <code>( )</code> 表示，通常用于存储安全的数据。</li>
+                                <li><strong>字典 (Dictionary)：</strong>无序的键值对（Key-Value）集合，用大括号 <code>{ }</code> 表示。通过键来快速查找对应的值。</li>
+                                <li><strong>集合 (Set)：</strong>无序且<strong>不重复</strong>的元素集合，同样用大括号表示，常用于去重和关系测试（交集、并集）。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="difficult-point">
+                            <h4>重难点解析</h4>
+                            <div class="point-item">
+                                <h5>列表的遍历与切片</h5>
+                                <p>使用切片 <code>list[start:end:step]</code> 可以非常方便地截取或翻转列表，它是 Python 最强大的特性之一。</p>
+                                <div class="code-example">
+                                    <code>nums = [10, 20, 30, 40, 50]</code><br>
+                                    <code><br># 截取前三个元素：[10, 20, 30]</code><br>
+                                    <code>first_three = nums[:3]</code><br>
+                                    <code><br># 翻转整个列表：[50, 40, 30, 20, 10]</code><br>
+                                    <code>reversed_nums = nums[::-1]</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="practice" class="section">
+            <div class="section-header">
+                <h2>在线实践</h2>
+                <p>在浏览器中直接编写和运行Python代码，即时验证学习效果</p>
+            </div>
+            
+            <div class="practice-container">
+                <div class="editor-section">
+                    <h3>Python代码编辑器</h3>
+                    <div class="editor-toolbar">
+                        <button class="btn-primary" onclick="executeCode()">▶ 运行代码</button>
+                        <button class="btn-secondary" onclick="clearCode()">清空代码</button>
+                        <button class="btn-secondary" onclick="showExample('basic')">示例代码</button>
+                        <div class="status-indicator">
+                            <span class="status-dot"></span>
+                            <span id="status-text">Python环境已就绪</span>
+                        </div>
+                    </div>
+                    
+                    <div class="code-editor-container">
+                        <textarea id="code-editor" class="code-editor" placeholder="在这里编写Python代码..."># Python代码编辑器
+print("欢迎使用Python教学平台！")
+
+# 计算两个数的和
+a = 10
+b = 20
+sum_result = a + b
+print(f"{a} + {b} = {sum_result}")
+
+# 简单的条件判断
+score = 85
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+else:
+    print("继续努力")</textarea>
+                    </div>
+                    
+                    <div class="output-section">
+                        <h4>运行结果</h4>
+                        <div id="output" class="output-area">
+                            代码运行结果将显示在这里...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-section">
+                    <h3>分层练习题</h3>
+                    <div class="exercise-tabs">
+                        <button class="exercise-tab active" onclick="showExerciseLevel('basic')">基础题</button>
+                        <button class="exercise-tab" onclick="showExerciseLevel('advanced')">提升题</button>
+                        <button class="exercise-tab" onclick="showExerciseLevel('extension')">拓展题</button>
+                    </div>
+                    
+                    <div class="exercise-content">
+                        <div class="exercise-level active" data-level="basic">
+                            <h4>基础练习题</h4>
+                            <div class="exercise-item" onclick="loadExercise('ex1')">
+                                <h5>练习1：变量与输出</h5>
+                                <p>定义变量并输出个人信息</p>
+                            </div>
+                            <div class="exercise-item" onclick="loadExercise('ex2')">
+                                <h5>练习2：数学计算</h5>
+                                <p>计算圆的面积和周长</p>
+                            </div>
+                            <div class="exercise-item" onclick="loadExercise('ex3')">
+                                <h5>练习3：条件判断</h5>
+                                <p>判断成绩等级</p>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-level" data-level="advanced">
+                            <h4>提升练习题</h4>
+                            <div class="exercise-item" onclick="loadExercise('ex4')">
+                                <h5>练习4：循环结构</h5>
+                                <p>打印乘法口诀表</p>
+                            </div>
+                            <div class="exercise-item" onclick="loadExercise('ex5')">
+                                <h5>练习5：函数定义</h5>
+                                <p>编写计算器函数</p>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-level" data-level="extension">
+                            <h4>拓展练习题</h4>
+                            <div class="exercise-item" onclick="loadExercise('ex6')">
+                                <h5>练习6：列表操作</h5>
+                                <p>学生成绩管理系统</p>
+                            </div>
+                            <div class="exercise-item" onclick="loadExercise('ex7')">
+                                <h5>练习7：文件读写</h5>
+                                <p>简单的日记本程序</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section">
+            <div class="section-header">
+                <h2>学习资源</h2>
+                <p>下载教学课件、微课视频等学习资料</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-category">
+                    <h3>教学课件</h3>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h4>Python基础语法课件</h4>
+                            <p>包含变量、数据类型、运算符等内容</p>
+                            <button class="btn-primary">下载PPT</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>流程控制教学课件</h4>
+                            <p>条件语句、循环语句详细讲解</p>
+                            <button class="btn-primary">下载PPT</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>函数与模块课件</h4>
+                            <p>函数定义、参数传递、模块导入</p>
+                            <button class="btn-primary">下载PPT</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>🎥 微课视频</h3>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h4>Python环境搭建教程</h4>
+                            <p>详细演示Python安装和配置过程</p>
+                            <button class="btn-primary">观看视频</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>第一个Python程序</h4>
+                            <p>编写和运行第一个Hello World程序</p>
+                            <button class="btn-primary">观看视频</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>常见错误调试</h4>
+                            <p>讲解Python常见错误和解决方法</p>
+                            <button class="btn-primary">观看视频</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>练习资料</h3>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h4>基础语法练习题</h4>
+                            <p>100道基础语法练习题及答案</p>
+                            <button class="btn-primary">下载PDF</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>综合应用题</h4>
+                            <p>50道综合应用编程题</p>
+                            <button class="btn-primary">下载PDF</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>期末考试模拟题</h4>
+                            <p>模拟期末考试题目及答案</p>
+                            <button class="btn-primary">下载PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 登录注册弹窗 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleLoginModal()">&times;</span>
+            <h2 id="modalTitle">用户登录</h2>
+            <div class="form-group">
+                <input type="text" id="username" placeholder="请输入用户名" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="请输入密码" required>
+            </div>
+            <button class="btn-primary" id="submitBtn" onclick="handleLoginRegister()">登录</button>
+            <p class="switch-mode" onclick="toggleMode()">没有账号？点击注册</p>
+        </div>
+    </div>
+
+    <!-- 优雅的 Toast 提示框容器 -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

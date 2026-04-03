@@ -1,0 +1,54 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "title": "基础题：打印Hello World",
+      "description": "编写一个Python程序，在控制台输出'Hello World'",
+      "difficulty": "easy",
+      "category": "输出练习",
+      "exampleCode": "print('Hello World')",
+      "hint": "使用print函数输出字符串",
+      "solution": "print('Hello World')"
+    },
+    {
+      "id": 2,
+      "title": "基础题：变量赋值",
+      "description": "定义一个变量存储你的姓名，然后打印出来",
+      "difficulty": "easy",
+      "category": "变量练习",
+      "exampleCode": "name = '你的名字'\nprint(name)",
+      "hint": "使用=进行赋值，然后使用print输出",
+      "solution": "name = '小明'\nprint('我的名字是：', name)"
+    },
+    {
+      "id": 3,
+      "title": "提升题：简单计算器",
+      "description": "编写一个简单的计算器，实现两个数字的加减乘除运算",
+      "difficulty": "medium",
+      "category": "计算练习",
+      "exampleCode": "num1 = float(input('请输入第一个数字：'))\nnum2 = float(input('请输入第二个数字：'))\noperator = input('请输入运算符(+, -, *, /)：')\n\nif operator == '+':\n    result = num1 + num2\nelif operator == '-':\n    result = num1 - num2\nelif operator == '*':\n    result = num1 * num2\nelif operator == '/':\n    if num2 != 0:\n        result = num1 / num2\n    else:\n        result = '除数不能为零'\nelse:\n    result = '无效的运算符'\n\nprint('计算结果：', result)",
+      "hint": "使用input获取输入，使用if判断运算符",
+      "solution": "num1 = float(input('请输入第一个数字：'))\nnum2 = float(input('请输入第二个数字：'))\noperator = input('请输入运算符(+, -, *, /)：')\n\nif operator == '+':\n    result = num1 + num2\nelif operator == '-':\n    result = num1 - num2\nelif operator == '*':\n    result = num1 * num2\nelif operator == '/':\n    if num2 != 0:\n        result = num1 / num2\n    else:\n        result = '除数不能为零'\nelse:\n    result = '无效的运算符'\n\nprint('计算结果：', result)"
+    },
+    {
+      "id": 4,
+      "title": "拓展题：成绩判断",
+      "description": "输入一个成绩，判断其等级（优秀、良好、及格、不及格）",
+      "difficulty": "hard",
+      "category": "条件判断",
+      "exampleCode": "score = float(input('请输入成绩：'))\n\nif score >= 90:\n    grade = '优秀'\nelif score >= 80:\n    grade = '良好'\nelif score >= 60:\n    grade = '及格'\nelse:\n    grade = '不及格'\n\nprint('成绩等级：', grade)",
+      "hint": "使用if-elif-else结构进行多条件判断",
+      "solution": "score = float(input('请输入成绩：'))\n\nif score >= 90:\n    grade = '优秀'\nelif score >= 80:\n    grade = '良好'\nelif score >= 60:\n    grade = '及格'\nelse:\n    grade = '不及格'\n\nprint('成绩等级：', grade)"
+    },
+    {
+      "id": 5,
+      "title": "拓展题：猜数字游戏",
+      "description": "编写一个猜数字游戏，程序随机生成一个数字，用户有5次机会猜测",
+      "difficulty": "hard",
+      "category": "游戏开发",
+      "exampleCode": "import random\n\nnumber = random.randint(1, 100)\nchances = 5\n\nprint('猜数字游戏开始！数字在1-100之间，你有5次机会。')\n\nfor i in range(chances):\n    guess = int(input(f'第{i+1}次猜测：'))\n    \n    if guess == number:\n        print('恭喜你，猜对了！')\n        break\n    elif guess < number:\n        print('猜小了')\n    else:\n        print('猜大了')\nelse:\n    print(f'游戏结束，正确答案是：{number}')",
+      "hint": "使用random模块生成随机数，使用for循环控制猜测次数",
+      "solution": "import random\n\nnumber = random.randint(1, 100)\nchances = 5\n\nprint('猜数字游戏开始！数字在1-100之间，你有5次机会。')\n\nfor i in range(chances):\n    guess = int(input(f'第{i+1}次猜测：'))\n    \n    if guess == number:\n        print('恭喜你，猜对了！')\n        break\n    elif guess < number:\n        print('猜小了')\n    else:\n        print('猜大了')\nelse:\n    print(f'游戏结束，正确答案是：{number}')"
+    }
+  ]
+}

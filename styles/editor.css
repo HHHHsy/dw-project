@@ -1,0 +1,210 @@
+/* 编辑器容器样式 */
+.editor-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.editor-header {
+    background: #1e88e5;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.editor-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-run, .btn-clear {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-run:hover {
+    background: #4caf50;
+    border-color: #4caf50;
+}
+
+.btn-clear:hover {
+    background: #f44336;
+    border-color: #f44336;
+}
+
+/* 代码编辑器样式 */
+.code-editor {
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    background: #fafafa;
+    color: #333;
+}
+
+.code-editor:focus {
+    outline: none;
+    background: white;
+}
+
+/* 代码语法高亮（基础实现） */
+.code-editor {
+    background: #f8f9fa;
+    border-left: 4px solid #1e88e5;
+}
+
+/* 输出区域样式 */
+.output-container {
+    padding: 20px;
+}
+
+.output-container h4 {
+    color: #1565c0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.output {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    min-height: 100px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* 错误提示样式 */
+.error {
+    color: #d32f2f;
+    background: #ffebee;
+    border-left: 4px solid #d32f2f;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.success {
+    color: #388e3c;
+    background: #e8f5e8;
+    border-left: 4px solid #388e3c;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+/* 代码行号样式 */
+.code-editor {
+    background-image: linear-gradient(transparent, transparent 19px, #e0e0e0 0);
+    background-size: 100% 20px;
+    line-height: 20px;
+}
+
+/* 代码自动补全提示 */
+.autocomplete-suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.autocomplete-suggestion {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.autocomplete-suggestion:hover,
+.autocomplete-suggestion.selected {
+    background: #e3f2fd;
+}
+
+/* 语法错误标记 */
+.syntax-error {
+    background: #ffebee;
+    border-bottom: 2px wavy #d32f2f;
+}
+
+/* 滚动条样式 */
+.code-editor::-webkit-scrollbar {
+    width: 8px;
+}
+
+.code-editor::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.code-editor::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.code-editor::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .editor-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .editor-controls {
+        justify-content: center;
+    }
+    
+    .code-editor {
+        height: 250px;
+        font-size: 13px;
+    }
+    
+    .output {
+        font-size: 13px;
+        min-height: 80px;
+    }
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1e88e5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
